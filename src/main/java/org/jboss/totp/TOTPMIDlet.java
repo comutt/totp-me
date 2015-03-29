@@ -79,7 +79,7 @@ public class TOTPMIDlet extends MIDlet implements CommandListener {
 	private static final char[] HEX_TABLE = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
 			'e', 'f' };
 
-	private static final String ADD_METHOD_OTPAUTH_URI = "otpauth URI://\n(Read QR code and paste it)";
+	private static final String ADD_METHOD_OTPAUTH_URI = "otpauth:// URI\n(Read QR code and paste it)";
 	private static final String ADD_METHOD_MANUAL = "Manual";
 
 	private static final String[] ADD_METHODS = { ADD_METHOD_OTPAUTH_URI, ADD_METHOD_MANUAL };
@@ -131,7 +131,7 @@ public class TOTPMIDlet extends MIDlet implements CommandListener {
 
 	private final ChoiceGroup chgAddingMethod = new ChoiceGroup("Choose adding method", ChoiceGroup.EXCLUSIVE, new String[]{}, null);
 
-	private final TextField tfOtpauthUri = new TextField("Otpauth URI\n(Paste URI that read from QR code)", null, 256, TextField.ANY);
+	private final TextField tfOtpauthUri = new TextField("otpauth:// URI\n(Paste URI that read from QR code)", null, 256, TextField.ANY);
 
 	private final StringItem siKeyHex = new StringItem("HEX", null);
 	private final StringItem siKeyBase32 = new StringItem("Base32 (no zeros)", null);
