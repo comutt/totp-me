@@ -136,6 +136,10 @@ public class OtpauthUri {
             throw new InvalidUriException("uri does not have secret");
         }
 
+        if (paramMap.containsKey("issuer")) {
+            issuer = (String) paramMap.get("issuer");
+        }
+
         if (paramMap.containsKey("algorithm")) {
             algorithm = (String) paramMap.get("algorithm");
         }

@@ -100,11 +100,39 @@ public class OtpauthUriTest extends TestCase {
         assertNull(uri.getCounter());
     }
 
+    public void testParse_shouldReturnValidInstance_ifTotpAndLabelAndSecretAndIssuerParam() throws Exception {
+        OtpauthUri uri = OtpauthUri.parse("otpauth://totp/foo.bar%2Bbaz%40example.com?secret=SEC%20RET&issuer=COMPANY");
+
+        assertEquals(uri.getType(), OtpauthUri.TokenType.TOTP);
+        assertEquals(uri.getIssuer(), "COMPANY");
+        assertEquals(uri.getLabel(), "foo.bar+baz@example.com");
+        assertEquals(uri.getSecret(), "SEC RET");
+        assertNull(uri.getAlgorithm());
+        assertNull(uri.getDigits());
+        assertNull(uri.getPeriod());
+        assertNull(uri.getImage());
+        assertNull(uri.getCounter());
+    }
+
     public void testParse_shouldReturnValidInstance_ifTotpAndIssuerAndLabelAndSecret() throws Exception {
         OtpauthUri uri = OtpauthUri.parse("otpauth://totp/ISSUER%3Afoo.bar%2Bbaz%40example.com?secret=SEC%20RET");
 
         assertEquals(uri.getType(), OtpauthUri.TokenType.TOTP);
         assertEquals(uri.getIssuer(), "ISSUER");
+        assertEquals(uri.getLabel(), "foo.bar+baz@example.com");
+        assertEquals(uri.getSecret(), "SEC RET");
+        assertNull(uri.getAlgorithm());
+        assertNull(uri.getDigits());
+        assertNull(uri.getPeriod());
+        assertNull(uri.getImage());
+        assertNull(uri.getCounter());
+    }
+
+    public void testParse_shouldReturnValidInstance_ifTotpAndIssuerAndLabelAndSecretAndIssuerParam() throws Exception {
+        OtpauthUri uri = OtpauthUri.parse("otpauth://totp/ISSUER%3Afoo.bar%2Bbaz%40example.com?secret=SEC%20RET&issuer=COMAPNY");
+
+        assertEquals(uri.getType(), OtpauthUri.TokenType.TOTP);
+        assertEquals(uri.getIssuer(), "COMAPNY");
         assertEquals(uri.getLabel(), "foo.bar+baz@example.com");
         assertEquals(uri.getSecret(), "SEC RET");
         assertNull(uri.getAlgorithm());
