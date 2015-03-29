@@ -131,7 +131,7 @@ public class TOTPMIDlet extends MIDlet implements CommandListener {
 
 	private final ChoiceGroup chgAddingMethod = new ChoiceGroup("Choose adding method", ChoiceGroup.EXCLUSIVE, new String[]{}, null);
 
-	private final TextField tfOtpauthUri = new TextField("Otpauth URI\n(Paste URI taht read from QR code)", null, 256, TextField.ANY);
+	private final TextField tfOtpauthUri = new TextField("Otpauth URI\n(Paste URI that read from QR code)", null, 256, TextField.ANY);
 
 	private final StringItem siKeyHex = new StringItem("HEX", null);
 	private final StringItem siKeyBase32 = new StringItem("Base32 (no zeros)", null);
